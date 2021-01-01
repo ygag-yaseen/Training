@@ -1,0 +1,132 @@
+<odoo>
+  <data>
+    <record id="bi_test1_view_tree" model="ir.ui.view">
+      <field name="name">bi.test1.view.tree</field>
+      <field name="model">bi.test1</field>
+      <field name="arch" type="xml">
+        <tree string="Custom">
+         <field name="name" />
+         <field name="value" widget="radio" />
+         <field name="value2" />
+         <field name="description" />
+         <field name="a2" />
+         <field name="salary1" />
+         <field name="age1" />
+         <field name="path" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="bi_test1_view_form" model="ir.ui.view">
+      <field name="name">bi.test1.view.form</field>
+      <field name="model">bi.test1</field>
+      <field name="arch" type="xml">
+        <form string="">
+        <header>
+          <button name="button_done" string="Done"  class="oe_highlight" type="object" attrs="{'invisible': [('state', 'not in', ['draft'])] }"/>
+          <button name="button_reset" string="Reset to Draft"  class="oe_highlight" type="object" attrs="{'invisible': [('state', 'in', ['draft'])] }"/>
+          <button name="button_cancel" string="Cancel"  type="object" attrs="{'invisible': [('state', 'in', ['cancel'])] }"/>
+          <field name="state" widget="statusbar" statusbar_visible="draft,done,cancel"/>
+          <button string="Add to file" name="addf" type="object" class="oe_highlight"/>
+        </header>
+          <sheet>
+            <group>
+              <field name="name" />
+              <field name="value" widget="radio" />
+              <field name="value2" />
+              <field name="description" />
+              <field name="a2" />
+              </group>
+              <group>
+              <field name="salary1" />
+              <field name="age1" /> 
+              <field name="path" />
+            </group>
+      
+            <button string="Create" name="createb" type="object" class="oe_highlight"/>
+            <button string="Write" name="writeb" type="object" class="oe_highlight"/>
+            
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record id="bi_test1_action" model="ir.actions.act_window">
+      <field name="name">bi.test1.Action</field>
+      <field name="res_model">bi.test1</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+      id="bi_test1_menu"
+      name="bi_test1"
+      sequence="10"/>
+
+    <menuitem
+      id="bi_test1_sub"
+      name="bi_test1"
+      action="bi_test1_action"
+      parent="bi_test1_menu"
+      sequence="10"/>
+
+
+      <record id="bi_test2_view_tree" model="ir.ui.view">
+      <field name="name">bi.test2.view.tree</field>
+      <field name="model">bi.test2</field>
+      <field name="arch" type="xml">
+        <tree string="Custom">
+         <field name="a1" />
+         <field name="a3" />
+         <field name="a4" widget= "many2many_tags" />
+
+            <field name="salary2" />
+         <field name="age2" />
+
+
+        </tree>
+      </field>
+    </record>
+
+    <record id="bi_test2_view_form" model="ir.ui.view">
+      <field name="name">bi.test2.view.form</field>
+      <field name="model">bi.test2</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <field name="a1" />
+              <field name="a3" />
+              <field name="a4" widget="many2many_tags" />
+            
+            </group>
+            <group>
+            <field name="salary2" />
+         <field name="age2" />
+         </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record id="bi_test2_action" model="ir.actions.act_window">
+      <field name="name">bi.test2.Action</field>
+      <field name="res_model">bi.test2</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+      id="bi_test2_menu"
+      name="bi_test2"
+      sequence="10"/>
+
+    <menuitem
+      id="bi_test2_sub"
+      name="bi_test2"
+      action="bi_test2_action"
+      parent="bi_test2_menu"
+      sequence="10"/>
+      
+  </data>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report id="report"
+            model="bi.path"
+            string="Report"
+            report_type="qweb-pdf"
+            name="hr_timesheet.report_timesheet"
+            file="report_timesheet"
+    />
+
+</odoo>

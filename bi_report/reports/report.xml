@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    <report id="print_report_pdf"
+                string="Sample Report"
+                model="bi.report"
+                report_type="qweb-pdf"
+                name="bi_report.report_template"
+                file="bi_report.report_template"/>
+
+
+
+    <template id="report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="row" >
+                                <div class="col-12">
+
+
+        <table class="table table-condensed">
+          <tr>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Value2</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>
+              <t t-esc="doc.name"/>
+            </td>
+            <td>
+              <t t-esc="doc.value"/>
+            </td>
+            <td>
+              <t t-esc="doc.value2"/>
+            </td>
+            <td>
+              <t t-esc="doc.description"/>
+            </td>
+          </tr>
+          </table>
+                                </div>
+                            </div>
+                        </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</data>
+</odoo>

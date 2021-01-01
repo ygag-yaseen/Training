@@ -1,0 +1,51 @@
+<odoo>
+  <data>
+
+    <record id="view_test_report_wizard" model="ir.ui.view">
+        <field name="name">project_Report</field>
+        <field name="model">project.test</field>
+        <field name="arch" type="xml">
+            <form string="Choose The Details">
+                <group>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="partner_id"/>
+                        <field name="name"/>
+                        <field name="price_unit"/>
+
+                        <field name="qty"/>
+                        <!-- <field name="company_id"/> -->
+                    </group>
+                </group>
+                <footer>
+                    <button name="button1" string="Create Purchase Order" type="object" class="oe_highlight" />
+                    
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record> 
+
+
+
+    <record id="view_test_report_action" model='ir.actions.act_window'>
+        <field name="name">project_report</field>
+        <field name="res_model">project.test</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record> 
+</data>
+
+    <record model="ir.ui.view" id="purchase_button">
+      <field name="name">crm.lead.form</field>
+      <field name="model">crm.lead</field>
+      <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+      <field name="arch" type="xml">
+         <xpath expr="//button[@name='action_set_lost']" position="after">
+          <button name="%(view_test_report_action)d" string="Purchase" type="action"/>
+        </xpath>
+      </field>
+    </record>
+
+
+</odoo>

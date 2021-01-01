@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<report id="print_report_pdf"
+  string="Sample Report"
+  model="purchase.order.line"
+  report_type="qweb-pdf"
+  name="bi_purchasereport.report_template"
+  file="bi_purchasereport.report_template"/>
+
+
+
+<template id="report_template">
+<t t-call="web.html_container">
+<t t-call="web.external_layout">
+<div class="page">
+
+
+      <table class="table table-condensed"> 
+      <tr>
+          <th>Reference</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Sub Total</th>
+      </tr>
+      <t t-foreach="docs" t-as="l">
+      <tr>
+          <td>  <t t-esc="l.order_id.name"/>  </td>
+          <!-- <t t-foreach="o.order_line" t-as="l"> -->
+
+            <td>  <t t-esc="l.product_id.name"/>  </td>
+            <td>  <t t-esc="l.product_qty"/>  </td>
+            <td>  <t t-esc="l.price_unit"/> </td>
+            <td>  <t t-esc="l.price_subtotal"/> </td>
+          
+          <!-- </t> -->
+      </tr>
+      </t>
+      </table>
+
+
+</div>
+</t>
+</t>
+</template>
+
+</data>
+</odoo>

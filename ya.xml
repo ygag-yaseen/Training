@@ -1,0 +1,8 @@
+button
+<!--<header>
+        <button name="button_done" string="Done" class="oe_highlight" type="object"/>
+<button name="button_reset" string="Reset to Draft" class="oe_highlight"
+       type="object"/>
+<button name="button_cancel" string="Cancel" type="object"/>
+   <field name="state" widget="statusbar" statusbar_visible="draft,done,cancel"/>
+</header>-->

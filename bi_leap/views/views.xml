@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+
+<record id="view_hr_wizard" model="ir.ui.view">
+            <field name="name">Error</field>
+            <field name="model">hr.wizard</field>
+            <field name="arch" type="xml">
+            <form string="generation fichier">
+                <group>
+                    <field name="message" />
+                </group>
+                <footer>
+
+                    <button string="OK" special="cancel" class="oe_highlight"/>
+
+                </footer>
+
+            </form>
+
+            </field>
+
+        </record> 
+
+    <!-- <record model="ir.ui.view" id="bi_leap.list">
+      <field name="name">bi_leap list</field>
+      <field name="model">hr.leave</field>
+      <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_manager" />
+      <field name="arch" type="xml">
+
+      </field>
+    </record> -->
+
+
+  </data>
+</odoo>

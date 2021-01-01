@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+       <!--Email template -->
+       <record id="email_template" model="mail.template">
+           <field name="name">Email Template</field>
+           <field name="model_id" ref="bi_emailtest1.model_bi_emailtest1"/>
+
+           <!-- <field name="report_template" ref="bi_pdf1.print_report_pdf"/>
+           <field name="report_name">Report name</field> -->
+
+           <field name="email_from">${object.sender}</field>
+           <field name="email_to" >${object.recipients_id}</field>
+           <field name="subject">Ref ${object.name or 'n/a' }</field>
+
+           <field name="body_html" type = "html">
+                    <p> ${object.message_body} </p>
+           </field>
+       </record>
+
+</odoo>

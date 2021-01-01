@@ -1,0 +1,53 @@
+<odoo>
+  <data>
+
+    <record id="bi_emailtest1_view_tree" model="ir.ui.view">
+      <field name="name">Details.view.tree</field>
+      <field name="model">bi.emailtest1</field>
+      <field name="arch" type="xml">
+        <tree string="">
+          <field name="sender"/>
+          <field name="recipients_id"/>
+          <!-- <field name="current_date"/> -->
+          <field name="message_body"/>          
+        </tree>
+      </field>
+    </record>
+    
+    <record id="bi_emailtest1_view_form" model="ir.ui.view">
+      <field name="name">Details.view.form</field>
+      <field name="model">bi.emailtest1</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <header>
+            <button string="E-mail" name="action_send_email" type="object" class="oe_highlight"/>
+          </header>
+          <sheet>
+            <group>
+              <field name="sender"/>
+              <field name="recipients_id"/>
+              <!-- <field name="current_date"/> -->
+              <field name="attach_file"/>
+            </group>
+            <group>
+              <field name="message_body"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="bi_emailtest1_action" model="ir.actions.act_window">
+      <field name="name">Email Test</field>
+      <field name="res_model">bi.emailtest1</field>
+      <field name="view_mode">tree,form</field>        
+    </record>
+
+    <menuitem
+      id="bi_emailtest1_menu"
+      name="Email Test"
+      action="bi_emailtest1_action"/>
+
+
+  </data>
+</odoo>

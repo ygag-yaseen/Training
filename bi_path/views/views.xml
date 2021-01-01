@@ -1,0 +1,64 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="bi_path.list">
+      <field name="name">bi_path list</field>
+      <field name="model">bi.path</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="path"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+
+    <record id="bi_path_view_form" model="ir.ui.view">
+      <field name="name">bi.path.view.form</field>
+      <field name="model">bi.path</field>
+      <field name="arch" type="xml">
+        <form string="">
+        <header>
+        <button string="Add to File" name="addf" type="object" class="oe_highlight"/>
+        <button string="Add to Redord" name="addr" type="object" class="oe_highlight"/>
+          </header>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="value"/>
+              <field name="path"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+
+    <record id="bi_path_action" model="ir.actions.act_window">
+      <field name="name">bi path</field>
+      <field name="res_model">bi.path</field>
+      <field name="view_mode">tree,form</field> 
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem
+      id="bi_path_menu"
+      name="bi_path"
+      sequence="10"/>
+
+    <menuitem
+      id="bi_pathr"
+      name="Bi Path"
+      action="bi_path_action"
+      parent="bi_path_menu"
+      sequence="10"/>
+
+  </data>
+</odoo>

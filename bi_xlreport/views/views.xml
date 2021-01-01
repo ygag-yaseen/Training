@@ -1,0 +1,35 @@
+<odoo>
+
+  <record id="sales_report_wizard" model="ir.ui.view">
+    <field name="name">Sales Order Report</field>
+    <field name="model">sale.report.wizard</field>
+    <field name="arch" type="xml">
+    <form string="Vendor Bill Excel Report">
+      <group col="4" colspan="4">
+        <field name="start_date"/>
+        <field name="end_date"/>
+      </group>
+      <footer>
+        <button name="print_report_xl" type="object" string="Print Excel" class="oe_highlight"/>                   
+        <button string="Cancel" class="btn btn-default" special="cancel"/>
+      </footer>
+    </form>
+    </field>
+    </record>
+
+<data>
+    <record id="action_sales_xl_report" model="ir.actions.act_window">
+    <field name="name">Sales Excel Report</field>
+    <field name="res_model">sale.report.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    </record>
+
+    <menuitem 
+    id="menu_fiscal_sales_xl_report"
+    name="Excel Report"
+    parent="sale.sale_menu_root"
+    action="action_sales_xl_report"/>
+
+</data>
+</odoo>

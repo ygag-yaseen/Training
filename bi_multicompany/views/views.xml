@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="bi_multicompany.list">
+      <field name="name">bi_multicompany list</field>
+      <field name="model">bi_multicompany.bi_multicompany</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="bi_multicompany.action_window">
+      <field name="name">bi_multicompany window</field>
+      <field name="res_model">bi_multicompany.bi_multicompany</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="bi_multicompany.action_server">
+      <field name="name">bi_multicompany server</field>
+      <field name="model_id" ref="model_bi_multicompany_bi_multicompany"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="bi_multicompany" id="bi_multicompany.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="bi_multicompany.menu_1" parent="bi_multicompany.menu_root"/>
+    <menuitem name="Menu 2" id="bi_multicompany.menu_2" parent="bi_multicompany.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="bi_multicompany.menu_1_list" parent="bi_multicompany.menu_1"
+              action="bi_multicompany.action_window"/>
+    <menuitem name="Server to list" id="bi_multicompany" parent="bi_multicompany.menu_2"
+              action="bi_multicompany.action_server"/>
+-->
+  </data>
+</odoo>

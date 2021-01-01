@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>   
+
+<report id="report_sale_docs"
+    string="report_sale_docs"
+    model="sale.order"
+    report_type="xlsx"           
+    file="bi_xlreport.report_sale_docs"           
+    name="bi_xlreport.report_sale_docs"/>
+    
+</odoo>

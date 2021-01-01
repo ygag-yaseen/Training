@@ -1,0 +1,51 @@
+
+<record id="to_do_view_tree" model="ir.ui.view">                                
+  <field name="name">to.do.tree</field>                                
+  <field name="model">to.do</field>                                
+  <field name="arch" type="xml">                                    
+    <tree string="Todo's">                                        
+      <field name="title"></field>                                        
+      <field name="progress_state"></field>                                    
+    </tree>                                
+  </field>                            
+</record>
+
+<record id="to_do_view_form" model="ir.ui.view">                                
+  <field name="name">to.do.form</field>                                
+  <field name="model">to.do</field>                                
+  <field name="arch" type="xml">                                    
+    <form string="Todo">                                        
+      <header>                                            
+        <field name="progress_state" widget="statusbar" clickable="True"></field>   
+        <button string="Todo" type="object" name="set_done" attrs="{'invisible': [('progress_state', '=', 'done')]}"></button>                                     
+      </header>                                        
+      <sheet>                                            
+        <group name="main_info">                                                
+          <field name="title"></field>                                            
+        </group>                                            
+        <group>                                                
+          <field name="description"></field>                                            
+        </group>                                        
+      </sheet>                                    
+    </form>                                
+  </field>                            
+</record>
+
+<menuitem id="todo_menu_root" 
+name="Todo's" sequence="98" 
+web_icon="tutorial_statusbar,static/src/img/icon.jpg"></menuitem>
+
+<record id="action_todos" model="ir.actions.act_window">                                
+  <field name="name">Todo's</field>                                
+  <field name="type">ir.actions.act_window</field>                                
+  <field name="res_model">to.do</field>                                
+  <field name="view_mode">tree,form</field>                                
+  <field name="search_view_id" ref="todo_view_search"></field>                            
+</record>
+
+<menuitem id="todos_main" 
+name="Todo's" 
+action="action_todos" 
+parent="todo_menu_root" 
+sequence="2">
+</menuitem>

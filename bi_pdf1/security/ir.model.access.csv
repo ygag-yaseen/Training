@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bi_pdf1_bi_pdf1,bi_pdf1.bi_pdf1,model_bi_pdf1_bi_pdf1,base.group_user,1,1,1,1

@@ -1,0 +1,41 @@
+<odoo>
+  <data>
+
+    <record id="action_purchase_report" model="ir.actions.act_window">
+      <!-- <field name="name">Select Date</field> -->
+      <field name="name">Select Product</field>
+      <field name="res_model">report.wizard</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field> 
+    </record>
+
+
+    <record model="ir.ui.view" id="view_id">
+      <field name="name">view.name</field>
+      <field name="model">report.wizard</field>
+      <field name="arch" type="xml">
+      <form string="any string" >
+      <group>
+        <field name="product_id1" />
+        <!-- <field name="date_from" />
+        <field name="date_to"/> -->
+      </group>
+      <footer>
+      <button string="Print" name="printb" type="object" class="oe_highlight"/>
+      <button string="Cancel" class="oe_link" special="cancel"/>
+      </footer>
+      </form>
+      </field>
+    </record>
+
+    <menuitem name="Report"
+    id="bi_purchasereport_menu"
+    parent="purchase.menu_purchase_root"
+    action="action_purchase_report"
+    sequence= "10"/>
+
+
+
+
+  </data>
+</odoo>

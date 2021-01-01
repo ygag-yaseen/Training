@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>   
+
+    <report id="report_invoice_docs"
+        string="EXCEL Report"
+        model="account.move"
+        report_type="xlsx"           
+        file="bi_pdf1.report_invoice_docs"           
+        name="bi_pdf1.report_invoice_docs"/>
+
+<!-- **************************************************************************************** -->
+
+<data>
+
+    <report id="print_report_pdf"
+    string="PDF Report"
+    model="account.move"
+    report_type="qweb-pdf"
+    name="bi_pdf1.report_template"
+    file="bi_pdf1.report_template"/>
+
+
+
+    <template id="report_template">
+    <t t-call="web.html_container">
+    <t t-call="web.external_layout">
+    <div class="page">
+
+
+        <table class="table table-condensed">
+
+            <tr>
+                <th>NUMBER</th>
+                <th>CUSTOMER NAME</th>
+                <th>INVOICE DATE</th>
+                <th>SALES PERSON</th>
+                <th>DUE DATE</th>
+                <th>TAX EXCLUDED</th>
+                <th>TOTAL</th>
+                <th>AMOUNT DUE</th>
+                <th>STATUS</th>
+            </tr>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+            <t t-set="foo" t-value="[]"/>
+            <t t-foreach="values" t-as="a">
+                <t t-set="foo" t-value="foo+[a['partner_name']]"/>
+            </t>
+            <t t-foreach="set(foo)" t-as="f">
+                <tr> <th>  <t t-esc="f"/>  </th></tr>
+                <t t-foreach="values" t-as="l">
+                    <t t-if="f==l['partner_name']">
+                        <tr>
+                            <td>  <t t-esc="l['id']"/>  </td>
+                            <td>  <t t-esc="l['partner_name']"/>  </td>
+                            <td>  <t t-esc="l['invoice_date']"/>  </td>
+                            <td>  <t t-esc="l['name']"/>  </td>
+                            <td>  <t t-esc="l['invoice_date_due']"/>  </td>
+                            <td>  <t t-esc="l['amount_untaxed_signed']"/>  </td>
+                            <td>  <t t-esc="l['amount_total_signed']"/>  </td>
+                            <td>  <t t-esc="l['amount_residual_signed']"/> </td>
+                            <td>  <t t-esc="l['state']"/> </td>                    
+                        </tr>
+                    </t>
+                </t>
+            </t>
+
+<!-- ****************************************************** -->
+            <!-- <t t-foreach="values" t-as="l">
+                <tr> <th>  <t t-esc="l['invoice_partner_display_name']"/>  </th> </tr>
+                
+                
+                <t t-if="l['invoice_partner_display_name']">
+
+                    <tr>
+                        <td>  <t t-esc="l['id']"/>  </td>
+                        <td>  <t t-esc="l['invoice_partner_display_name']"/>  </td>
+                        <td>  <t t-esc="l['invoice_date']"/>  </td>
+                        <td>  <t t-esc="l['name']"/>  </td>
+                        <td>  <t t-esc="l['invoice_date_due']"/>  </td>
+                        <td>  <t t-esc="l['amount_untaxed_signed']"/>  </td>
+                        <td>  <t t-esc="l['amount_total_signed']"/>  </td>
+                        <td>  <t t-esc="l['amount_residual_signed']"/> </td>
+                        <td>  <t t-esc="l['state']"/> </td>                    
+                    </tr>
+                </t>
+
+            </t> -->
+        </table>
+
+    </div>
+    </t>
+    </t>
+    </template>
+
+</data>
+</odoo>
