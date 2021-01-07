@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+
+    <record id="bi_sqlview_view_tree" model="ir.ui.view">
+      <field name="name">bi.sqlview.view.tree</field>
+      <field name="model">bi.sqlview</field>
+      <field name="arch" type="xml">
+        <tree string="">
+          <field name="name"          string="Quotation Number" />
+          <field name="create_date"   string="Create Date" />
+          <field name="date_order"    string="Expected Date" />
+          <field name="partner_id"    string="Customer" />
+          <field name="user_id"       string="Salesperson" />
+          <field name="company_id"    string="Company" />
+          <field name="amount_total"  string="Total" />
+          <field name="state"         string="Status" />
+          <field name="amount_total_invoice"  string="Invoice Total" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="bi_sqlview_action" model="ir.actions.act_window">
+      <field name="name">Bi SqlView</field>
+      <field name="res_model">bi.sqlview</field>
+      <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem
+      id="bi_sqlview_menu"
+      name="SQL View"
+      sequence="10"/>
+
+    <menuitem
+      id="bi_sql_sub_menu"
+      name="SQL"
+      action="bi_sqlview_action"
+      sequence="10"/>
+
+  </data>
+</odoo>
