@@ -74,7 +74,7 @@ class createpurchaseorder(models.TransientModel):
 						'sale_id'	: self.id
 					})
 
-		sale = sale_res.create({
+		sale_res.create({
 			'partner_id' 	: purchase.company_id.partner_id.id,
 			'warehouse_id' 	: warehouse_res.id,
 			'company_id' 	: self.mycompany2_id.id,
@@ -161,11 +161,9 @@ class bi_purchasemulti(models.Model):
 			if self.env.user.has_group('sale.group_auto_done_setting'):
 				self.action_done()
 			return True
-
-
 #-----------------------------------------------------------------------------------------------
 class sales_button(models.Model):
     _inherit = 'purchase.order'
 
     sale_id = fields.Many2one('sale.order', string='')
-# ----------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------

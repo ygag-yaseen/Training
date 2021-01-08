@@ -2,7 +2,6 @@
 
 from odoo import models, fields, api, tools
 
-
 class bi_sqlview(models.Model):
     _name = 'bi.sqlview'
     _description = 'bi_sqlview.bi_sqlview'
@@ -16,7 +15,7 @@ class bi_sqlview(models.Model):
     company_id = fields.Many2one('res.company', string='')
     amount_total = fields.Float(string='')
     state = fields.Char(string='')
-    amount_total_invoice = fields.Float(string='')
+    # amount_total_invoice = fields.Float(string='')
 
     def init(self):
         tools.drop_view_if_exists(self.env.cr, 'bi_sqlview')
@@ -32,6 +31,6 @@ class bi_sqlview(models.Model):
                 so.company_id as company_id,
                 so.amount_total as amount_total, 
                 so.state as state, 
-                am.amount_residual as amount_total_invoice
             FROM sale_order as so 
             JOIN account_move as am ON am.invoice_origin = so.name) ''')
+                # am.amount_residual as amount_total_invoice

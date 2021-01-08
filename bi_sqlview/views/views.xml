@@ -14,7 +14,7 @@
           <field name="company_id"    string="Company" />
           <field name="amount_total"  string="Total" />
           <field name="state"         string="Status" />
-          <field name="amount_total_invoice"  string="Invoice Total" />
+          <!-- <field name="amount_total_invoice"  string="Invoice Total" /> -->
         </tree>
       </field>
     </record>
