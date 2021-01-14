@@ -15,9 +15,10 @@
       <field name="arch" type="xml">
         <form string="Choose The Details">
           <header> 
-            <field name="state" widget="statusbar" statusbar_visible="draft,reserved,transfered" />
-            <button string="Reserve To Transit" name="reserve" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ('reserved','transfered'))]}"/>
-            <button string="Tansfer To Destination" name="validate" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ('draft','transfered'))]}"/>
+            <field name="state" widget="statusbar" statusbar_visible="draft,request,reserved,transfered" />
+            <button string="Request" name="request" type="object" class="oe_highlight" states="draft" />
+            <button string="Approve" name="reserve" type="object" class="oe_highlight" states="request" groups="bi_stock_tracking.overtime_manager2"/>
+            <button string="Delivery" name="validate" type="object" class="oe_highlight" states="reserved" groups="bi_stock_tracking.overtime_user2"/>
           </header>
           <sheet>
             <group>
@@ -26,26 +27,21 @@
             <group>
               <group>
                 <field name="picking_from_id"/>
-                <field name="transit_id"/>
-                <field name="dest_location_id"/>
               </group>
               <group>
                 <field name="scheduled_date"/>
+                <field name="user_id"/>
               </group>
             </group>
-            <group> 
-              <group>
-                <field name="product_id"/>
-                <field name="qty_reserve"/>
-                <field name="qty_demand"/>
-                <field name="product_uom_id" />
-              </group>
-              <group>
-                <field name="operation_type_id"/>
-                <field name="move_type" />
-                <field name="company_id" />
-              </group>
-            </group>
+
+              <field name="order_line_ids" >
+                <tree editable="bottom">
+                  <field name="product_id"/>
+                  <field name="qty_demand"/>
+                  <field name="product_uom_category_id" invisible="1"/>
+                  <field name="product_uom_id"/>
+                </tree>
+              </field>
           </sheet>
         </form>
       </field>
@@ -58,15 +54,10 @@
         <tree>
           <field name="name" />
           <field name="picking_from_id"/>
-          <field name="transit_id"/>
-          <field name="dest_location_id"/>
           <field name="operation_type_id"/>
           <field name="scheduled_date"/>
-          <field name="product_id"/>
-          <!-- <field name="qty_reserve"/> -->
-          <!-- <field name="qty_demand"/> -->
-          <!-- <field name="move_type" /> -->
           <field name="company_id" />
+          <field name="state" />
         </tree>
       </field>
     </record> 
@@ -82,6 +73,17 @@
       name="Stock Transfer"
       action="view_test_report_action"
       sequence="10"/>
+
+    <record id="view_order_form_inherit" model="ir.ui.view">        	
+      <field name="name">Stock Location Custom</field>        	
+      <field name="model">stock.location</field>        	
+      <field name="inherit_id" ref="stock.view_location_form"/>        	
+      <field name="arch" type="xml">  
+      <xpath expr="//field[@name='company_id']" position="after">
+        <field name="user_id"/>            	
+      </xpath>          	              		
+      </field>
+    </record>
 
   </data>
 </odoo>
