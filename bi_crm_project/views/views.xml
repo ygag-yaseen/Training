@@ -1,0 +1,48 @@
+<odoo>
+  <data>
+
+    <record id="view_crm_task_form" model="ir.ui.view">
+      <field name="name">crm</field>
+      <field name="model">crm.lead</field>
+      <field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor"/>
+      <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_sale_quotations_new']" position="replace">
+          <button string="New Quotation" name="action_sale_quotations_new" type="object" class="oe_highlight"
+              attrs="{'invisible': ['|', '|', ('type', '=', 'lead'), ('stage_id', '=', 4), '&amp;', ('probability', '=', 0), ('active', '=', False)]}"/>
+        </xpath>
+
+        <xpath expr="//button[@name='action_view_sale_quotation']" position="replace">
+          <button class="oe_stat_button" type="object"
+              name="action_view_sale_quotation" icon="fa-pencil-square-o" attrs="{'invisible': ['|', '|', ('type', '=', 'lead'), ('stage_id', '=', 4)]}">
+              <field name="quotation_count" widget="statinfo" string="Quotations"/>
+          </button>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="view_crm_task_form1" model="ir.ui.view">
+      <field name="name">crm</field>
+      <field name="model">crm.lead</field>
+      <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='company_id']" position="after">
+          <field name="emp_ids" widget="many2many_tags"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="view_project_task_form" model="ir.ui.view">
+      <field name="name">project</field>
+      <field name="model">project.project</field>
+      <field name="inherit_id" ref="project.edit_project"/>
+      <field name="arch" type="xml">
+        <data>
+          <xpath expr="//field[@name='partner_id']" position="after">
+            <field name="emp_ids" widget="many2many_tags"/>
+          </xpath>
+        </data>
+      </field>
+    </record>
+
+  </data>
+</odoo>

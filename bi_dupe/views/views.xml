@@ -1,0 +1,48 @@
+<odoo>
+  <data>
+<record id="bi_duplicate_view_tree" model="ir.ui.view">
+  <field name="name">bi.dupe.view.tree</field>
+  <field name="model">bi.dupe</field>
+  <field name="arch" type="xml">
+    <tree string="">
+    <field name="source_document"></field>
+    <field name="count"></field>
+    <field name="intervel"></field>
+    </tree>
+  </field>
+</record>
+
+  <record id="bi_duplicate_view_form" model="ir.ui.view">
+    <field name="name">bi.dupe.view.form</field>
+    <field name="model">bi.dupe</field>
+    <field name="arch" type="xml">
+      <form string="">
+        <sheet>
+          <group>
+          <field name="source_document"></field>
+          </group>
+          <group>
+          <field name="count"></field>
+          </group>
+          <group>
+          <field name="intervel"></field>
+          </group>
+          <!-- <button string="Go" name="goo" type="object" class="oe_highlight"/> -->
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <record id="bi_duplicate_action" model="ir.actions.act_window">
+    <field name="name">Action duplicate</field>
+    <field name="res_model">bi.dupe</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+<menuitem
+  id="bi_duplicate_menu"
+  name="Dupe"
+  action="bi_duplicate_action"
+  sequence="10"/>
+
+  </data>
+</odoo>
