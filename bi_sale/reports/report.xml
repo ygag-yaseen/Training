@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report
+        id="manufacturing_order"
+        model="sale.order"
+        string="Manufacturing Order"
+        report_type="qweb-pdf"
+        paperformat="bi_sale.paperformat"
+        name="bi_sale.report_template"
+        file="bi_sale.report_template"
+    />
+
+</odoo>

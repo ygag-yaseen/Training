@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="menu_partner_form" model="website.menu">
+        <!-- #here record id is the unique id of your record & model is the ‘website.menu’ of the website. -->
+            <field name="name">Create Customer</field>
+            <!-- #here mention the name of the menu to appear. -->
+            <field name="url">/customer/form</field>
+            <!-- #here mention the url of the website to be redirected after clicking. This is a controller. -->
+            <field name="parent_id" ref="website.main_menu"/>
+            <!-- #here mention the parent id of the menu which we are inheriting. -->
+            <field name="sequence" type="int">22</field>
+        </record>
+    </data>
+
+
+
+</odoo>

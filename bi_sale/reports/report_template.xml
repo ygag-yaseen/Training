@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_template">
+        <t t-call="web.html_container">
+            <t t-call="bi_sale.report_layout_template">
+                <div class="page">
+                    <img src="tunisia_project20012021/bi_sale/static/src/img/ge.png" height="60px" width="350px"/>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_layout_template">
+        <div class="header">
+        </div>
+
+        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-raw="0"/>
+        </div>
+
+        <div class="footer">
+        </div>
+    </template>
+
+</odoo>

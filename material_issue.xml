@@ -1,0 +1,114 @@
+<odoo>
+    <data>
+        <template id="material_issue_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="bi_report_template.custom_layout_header">
+                        <div class="page">
+                            <div style="font-size:40px;text-align:center;width:100%;color:#243f86;font-family:'Roboto', sans-serif;">
+                                <span>MATERIAL ISSUE</span>
+                            </div>
+                            <br/>
+                            <div style="padding-left:40px;padding-right:40px">
+                                <table width="100%" style=" padding: 20px 0px;">
+                                    <tr>
+                                        <td  width="19%" style="text-align:left;font-size:13px;color:#243f86;">
+                                            <b> Project </b> 
+                                        </td>
+                                        <td width="1%"> :</td>
+                                        <td width="40%" style="font-size:13px;color: #000000;text-align:left;padding-left:10px;">
+                                            <t t-if="o.project_id.name"><span  t-field="o.project_id.name"/></t>
+                                        </td>
+                                        <td width="40%"> </td>
+                                    </tr>
+                                    <tr width="100%">
+                                        <td  width="19%" style="text-align:left;font-size:13px;color:#243f86;">
+                                            <b> Date </b> 
+                                        </td>
+                                        <td width="1%"> :</td>
+                                        <td width="400%" style="font-size:13px;color: #000000;text-align:left;padding-left:10px;">
+                                            <t t-if="o.date"><span  t-field="o.date"/></t>
+                                        </td>
+                                        <td width="40%"></td>
+                                        </tr>
+                                   
+                                </table>
+
+                            </div>
+                            <br/><br/>
+                            <div style="padding-left:40px;padding-right:40px">
+                                <table class="table table-sm o_main_table" width="100%">
+                                    <thead>
+                                        <tr width="100%">
+                                            <th width="10%" class="text-left">Sl No</th>
+                                            <th width="70%" class="text-left">Product</th>
+                                            <th width="20%" class="text-right">Quantity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="sl_no" t-value="1"/>
+                                        <t t-set="total_qty" t-value="0"/>
+                                        <t t-foreach="o.material_line_ids" t-as="line">
+                                            <tr width="100%">
+                                                <td width="10%" class="text-left">
+                                                    <span t-esc="sl_no"/>
+                                                    <t t-set="sl_no" t-value="sl_no+1"/>
+                                                </td>
+                                                <td width="70%" class="text-left">
+                                                    <t t-if="line.product_id.name"><span t-field="line.product_id.name"/></t>
+                                                </td>
+                                                <td width="20%" class="text-right">
+                                                    <t t-if="line.quantity"><span t-field="line.quantity"/></t>
+                                                    <t t-set="total_qty" t-value="total_qty+line.quantity"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+
+                                <div class="row" style="page-break-inside: avoid !important;">
+                                    <div class="col-9">
+                                        <br/>
+                                        
+                                    </div>
+
+                                    <div class="col-3" style="page-break-inside: avoid !important;">
+                                        <table class="table table-sm" style="text-align:right" width="100%">
+                                            <tr class="border-black o_subtotal"  width="100%">
+                                                <td width="80%" style="text-align:left"><strong>Total:</strong></td>
+                                                <td width="20%">
+                                                    <span t-esc="total_qty"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="page-break-inside: avoid !important;">
+                                    <div class="col-7">
+                                        <br/>
+                                        <span style="color:#2D3C8C;line-height:2;"><b>Issued by:</b></span><br/>
+                                        <t t-if="o.requested_by.name"><span t-field="o.requested_by.name"/></t>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
+
+
+-----------------------------------------------------
+        <report
+                id="material_issue_pdf"
+                model="material.issue"
+                string="Material Issue"
+                report_type="qweb-pdf"
+                name="bi_reports.material_issue_report"
+                file="bi_reports.material_issue_report"
+                paperformat ="bi_reports.paperformat_report_tax_invoice"
+        />

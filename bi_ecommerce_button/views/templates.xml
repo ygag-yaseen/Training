@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <template id="product_buy_now1" inherit_id="website_sale.product" active="False" customize_show="True" name="Sample Button">
+            <xpath expr="//a[@id='add_to_cart']" position="after">
+                <a role="button" id="buy_now1" class="btn btn-outline-primary btn-lg mt16 d-block d-sm-inline-block" href="#"><i class="fa fa-apple"/> Sample</a>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="bi_ecommerce_button.list">
+      <field name="name">bi_ecommerce_button list</field>
+      <field name="model">bi_ecommerce_button.bi_ecommerce_button</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="bi_ecommerce_button.action_window">
+      <field name="name">bi_ecommerce_button window</field>
+      <field name="res_model">bi_ecommerce_button.bi_ecommerce_button</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="bi_ecommerce_button.action_server">
+      <field name="name">bi_ecommerce_button server</field>
+      <field name="model_id" ref="model_bi_ecommerce_button_bi_ecommerce_button"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="bi_ecommerce_button" id="bi_ecommerce_button.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="bi_ecommerce_button.menu_1" parent="bi_ecommerce_button.menu_root"/>
+    <menuitem name="Menu 2" id="bi_ecommerce_button.menu_2" parent="bi_ecommerce_button.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="bi_ecommerce_button.menu_1_list" parent="bi_ecommerce_button.menu_1"
+              action="bi_ecommerce_button.action_window"/>
+    <menuitem name="Server to list" id="bi_ecommerce_button" parent="bi_ecommerce_button.menu_2"
+              action="bi_ecommerce_button.action_server"/>
+-->
+  </data>
+</odoo>
